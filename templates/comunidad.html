@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ciclo Viajero</title>
+    <link rel="Logo" href="img/Logo.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="d-flex justify-content-center py-3 border-bottom">
+      <a
+        href="index.html"
+        class="d-flex align-items-center mb-3 mb-md-0 link-body-emphasis text-decoration-none"
+      >
+        <img id="Logo" src="img/Logo-2.png" alt="Logo" />
+        <span class="fs-2 fw-bold">Ciclo Viajero</span>
+      </a>
+    </header>
+
+    <!--HTML-->
+    <!-- Hero -->
+    <div class="container-fluid text-center" style="margin-top: 50px">
+      <p class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Comunidad</p>
+    </div>
+    <!-- Hero -->
+
+    <!--CONTENIDO-->
+    <div class="container">
+      <div class="main-body p-0">
+        <div class="justify-content-center">
+          <button
+            class="btn btn-primary has-icon btn-block"
+            type="button"
+            data-toggle="modal"
+            data-target="#threadModal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-plus mr-2"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Nuevo comentario
+          </button>
+        </div>
+
+        <div class="p-2 p-sm-3 collapse forum-content show">
+          <div class="row justify-content-between">
+            <div class="card mb-4 col-lg-5">
+              <div class="card-body p-2 p-sm-3">
+                <div>
+                  <img
+                    src="img/Usuario.png"
+                    class="mr-3 rounded-circle"
+                    width="50"
+                    alt="User"
+                  />
+                  <h6>
+                    <a
+                      href="#"
+                      data-toggle="collapse"
+                      data-target=".forum-content"
+                      class="text-body"
+                      >¡Gracias por las alertas de seguridad!</a
+                    >
+                  </h6>
+                </div>
+                <p class="text-secondary">
+                  Las alertas de seguridad me han ayudado a evitar zonas
+                  peligrosas y a tomar precauciones en intersecciones
+                  conflictivas. ¡Mi viaje en bicicleta se ha vuelto mucho más
+                  seguro gracias a esta app!
+                </p>
+                <p class="text-muted">
+                  <a href="javascript:void(0)">BiciAventura</a> respondió hace
+                  <span class="text-secondary font-weight-bold">2 horas</span>
+                </p>
+              </div>
+            </div>
+            <div class="card mb-4 col-lg-5">
+              <div class="card-body p-2 p-sm-3">
+                <div>
+                  <img
+                    src="img/Usuario.png"
+                    class="mr-3 rounded-circle"
+                    width="50"
+                    alt="User"
+                  />
+                  <h6>
+                    <a
+                      href="#"
+                      data-toggle="collapse"
+                      data-target=".forum-content"
+                      class="text-body"
+                      >¡Increíble aplicación para ciclistas urbanos!</a
+                    >
+                  </h6>
+                </div>
+                <p class="text-secondary">
+                  Me encanta cómo esta aplicación aborda la falta de
+                  infraestructura ciclista en la ciudad. Ahora puedo planificar
+                  rutas seguras y descubrir nuevas vías para desplazarme de
+                  manera sostenible.
+                </p>
+                <p class="text-muted">
+                  <a href="javascript:void(0)">Ciclista123</a> respondió hace
+                  <span class="text-secondary font-weight-bold">1 día</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between">
+            <div class="card mb-4 col-lg-5">
+              <div class="card-body p-2 p-sm-3">
+                <div>
+                  <img
+                    src="img/Usuario.png"
+                    class="mr-3 rounded-circle"
+                    width="50"
+                    alt="User"
+                  />
+                  <h6>
+                    <a
+                      href="#"
+                      data-toggle="collapse"
+                      data-target=".forum-content"
+                      class="text-body"
+                      >¡Una revolución para los ciclistas urbanos!</a
+                    >
+                  </h6>
+                </div>
+                <p class="text-secondary">
+                  Finalmente, una solución integral para la movilidad en
+                  bicicleta. La planificación de rutas y las alertas de
+                  seguridad son un gran paso hacia la seguridad vial. ¡Estoy
+                  emocionado por ver cómo crece esta comunidad ciclista en
+                  línea!
+                </p>
+                <p class="text-muted">
+                  <a href="javascript:void(0)">PedaleandoLibre</a> respondió
+                  hace
+                  <span class="text-secondary font-weight-bold">3 días</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="card mb-4 col-lg-5">
+              <div class="card-body p-2 p-sm-3">
+                <div>
+                  <img
+                    src="img/Usuario.png"
+                    class="mr-3 rounded-circle"
+                    width="50"
+                    alt="User"
+                  />
+                  <h6>
+                    <a
+                      href="#"
+                      data-toggle="collapse"
+                      data-target=".forum-content"
+                      class="text-body"
+                      >¡Muy útil en mi día a día!</a
+                    >
+                  </h6>
+                </div>
+                <p class="text-secondary">
+                  Como ciclista habitual, esta aplicación ha mejorado
+                  significativamente mi experiencia en la ciudad. Ahora puedo
+                  evitar rutas peligrosas y compartir mis propios consejos con
+                  otros ciclistas. ¡Gracias por hacer que pedalear sea más
+                  seguro y divertido!
+                </p>
+                <p class="text-muted">
+                  <a href="javascript:void(0)">CiclistaUrbano</a> respondió hace
+                  <span class="text-secondary font-weight-bold">1 semana</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-between">
+            <div class="card mb-4 col-lg-5">
+              <div class="card-body p-2 p-sm-3">
+                <div>
+                  <img
+                    src="img/Usuario.png"
+                    class="mr-3 rounded-circle"
+                    width="50"
+                    alt="User"
+                  />
+                  <h6>
+                    <a
+                      href="#"
+                      data-toggle="collapse"
+                      data-target=".forum-content"
+                      class="text-body"
+                      >¡Impresionante trabajo en diseño!</a
+                    >
+                  </h6>
+                </div>
+                <p class="text-secondary">
+                  No solo es una herramienta funcional, ¡también es visualmente
+                  atractiva! La interfaz de usuario es intuitiva y fácil de
+                  navegar. Estoy emocionado por explorar nuevas rutas y conectar
+                  con otros entusiastas del ciclismo en mi ciudad.
+                </p>
+                <p class="text-muted">
+                  <a href="javascript:void(0)">RuedasCreativas</a> respondió
+                  hace
+                  <span class="text-secondary font-weight-bold">2 días</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="card mb-4 col-lg-5">
+              <div class="card-body p-2 p-sm-3">
+                <div>
+                  <img
+                    src="img/Usuario.png"
+                    class="mr-3 rounded-circle"
+                    width="50"
+                    alt="User"
+                  />
+                  <h6>
+                    <a
+                      href="#"
+                      data-toggle="collapse"
+                      data-target=".forum-content"
+                      class="text-body"
+                      >¡Necesario para nuestra ciudad!</a
+                    >
+                  </h6>
+                </div>
+                <p class="text-secondary">
+                  Vivo en una ciudad donde la movilidad en bicicleta es
+                  esencial, pero la seguridad siempre ha sido una preocupación.
+                  Esta aplicación es una respuesta a nuestros problemas y estoy
+                  emocionado por ver cómo contribuye a un entorno más amigable
+                  para los ciclistas.
+                </p>
+                <p class="text-muted">
+                  <a href="javascript:void(0)">CiudadBici</a> respondió hace
+                  <span class="text-secondary font-weight-bold">4 días</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--CONTENIDO-->
+    <!--HTML-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-..."
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
