@@ -11,7 +11,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
@@ -19,13 +19,18 @@
         href=""
         class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
       >
-        <img id="Logo" src="templates/img/Logo-2.png" alt="Logo" />
+        <img id="Logo" src="img/Logo-2.png" alt="Logo" />
         <span class="fs-4">Ciclo Viajero</span>
       </a>
       <ul class="nav nav-pills">
         <li class="nav-item">
+          <a href="/login" class="nav-link"
+            ><button type="button" class="btn btn-success">Iniciar sesión</button></a
+          >
+        </li>
+        <li class="nav-item">
           <a href="/comunidad" class="nav-link"
-            ><button action="/comunidad" type="button" class="btn btn-success">Comunidad</button></a
+            ><button type="button" class="btn btn-success">Comunidad</button></a
           >
         </li>
         <li class="nav-item">
@@ -33,7 +38,7 @@
             ><button type="button" class="btn btn-outline-success">
               Mapas
             </button></a
-          >
+          ><li>
         </li>
         <li class="nav-item">
           <a href="#alertas" class="nav-link"
