@@ -1,4 +1,4 @@
-from config.db import app, db, ma
+from db import app, db, ma
 
 class Community(db.Model):
     __tablename__ = "tblCommunity"

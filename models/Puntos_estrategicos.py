@@ -1,4 +1,4 @@
-from config.db import app, db, ma
+from db import app, db, ma
 
 class Puntos_estrategicos(db.Model):
     __tablename__ = "tblptos_Estrategicos"
@@ -7,7 +7,7 @@ id_PuntoE = db.Column(db.Integer, primary_key = True)
 Descripcion_Punto = db.column(db.String (1000))
 Nombre_Punto = db.column(db.String (1000))
 Longitud = db.column(db.Float (1000))
-Longitud = db.column(db.Float (1000))
+Latitud = db.column(db.Float (1000))
 Comentarios = db.column(db.String (1000))
 Tipo_punto = db.column(db.String (1000))
 

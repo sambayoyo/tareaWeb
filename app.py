@@ -2,6 +2,19 @@ from flask import Flask, render_template, request
 
 app = Flask("/")
 
+
+from api.Clientes import ruta_cliente
+from api.Ruta import  ruta_ruta
+from api.Alertas import ruta_alertas
+from api.Community import ruta_community
+
+
+app.register_blueprint(ruta_cliente, url_prefix="/api")
+app.register_blueprint(ruta_ruta, url_prefix="/api")
+app.register_blueprint(ruta_alertas, url_prefix="/api")
+app.register_blueprint(ruta_community, url_prefix="/api")
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
