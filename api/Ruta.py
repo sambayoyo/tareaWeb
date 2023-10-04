@@ -26,22 +26,17 @@ def saveruta():
 @ruta_ruta.route("/updateruta", methods=["PUT"])
 def updatecliente():
     id = request.json['id']
-    latitud = latitud.json['latitud']
-    longitud = longitud.json['latitud']
-    nruta = ruta.query.get(id) #Select * from ruta where id = id
-    nruta.longitud=longitud
-    nruta.latitud=latitud
+    coordenadas_iniciales = request.json['coordenadas_iniciales']
+    coordenadas_finales = request.json['coordenadas_finales']
+    fecha_creacion = request.json['fecha_creacion']
+    nombre_ruta = request.json['nombre_ruta']
+    nruta = Ruta.query.get(id) #Select * from ruta where id = id
+    nruta.coordenadas_iniciales = coordenadas_iniciales
+    nruta.coordenadas_finales = coordenadas_finales
+    nruta.fecha_creacion = fecha_creacion
+    nruta.nombre_ruta = nombre_ruta
     db.session.commit()
     return "Datos Actualizado con exitos."
-
-
-
-
-
-
-
-
-#Cammpo Eliminar
 
 
 @ruta_ruta.route("/deleteruta/<id>", methods=["GET"])

@@ -1,41 +1,43 @@
 from flask import Blueprint, jsonify, request,json
 from db import db, app, ma
-from models.Usuarios import Clientes, ClienteSchema
+from models.Usuarios import Usuarios, UsuarioSchema
 
-ruta_cliente = Blueprint("ruta_cliente",__name__)
+ruta_usuario = Blueprint("ruta_usuario",__name__)
 
+usuario_schema = UsuarioSchema()
+usuario_schema = UsuarioSchema(many=True)
 
-cliente_schema = ClienteSchema()
-clientes_schema = ClienteSchema(many=True)
-
-@ruta_cliente.route("/clientes", methods=["GET"])
-def clientes():
-    resultall = Clientes.query.all()
-    result = clientes_schema.dump(resultall)
+@ruta_usuario.route("/usuarios", methods=["GET"])
+def usuarios():
+    resultall = Usuarios.query.all()
+    result = usuario_schema.dump(resultall)
     return jsonify(result)
 
-@ruta_cliente.route("/savecliente", methods=["POST"])
-def savecliente():
-    nombre = request.json['nombre']
-    new_cliente = Clientes(nombre)
-    db.session.add(new_cliente)
+@ruta_usuario.route("/saveusuario", methods=["POST"])
+def saveusuario():
+    data = request.get_json()
+    db.session.add(Usuarios(**data))
     db.session.commit()
-    return "Datos guardados con exitos"
+    return usuario_schema.jsonify(Usuarios(**data))
 
-@ruta_cliente.route("/updatecliente", methods=["PUT"])
-def updatecliente():
+@ruta_usuario.route("/updateusuario", methods=["PUT"])
+def updateusuario():
     id = request.json['id']
-    nombre = request.json['nombre']
-    ncliente = Clientes.query.get(id) #Select * from Cliente where id = id
-    ncliente.nombre = nombre
+    email = request.json['email']
+    password = request.json['password']
+    nickname = request.json['nickname']
+    nusuario = Usuarios.query.get(id) 
+    nusuario.email = email
+    nusuario.password = password
+    nusuario.nickname = nickname
     db.session.commit()
     return "Datos Actualizado con exitos"
 
-@ruta_cliente.route("/deletecliente/<id>", methods=["GET"])
-def deletecliente(id):
-    cliente = Clientes.query.get(id)
-    db.session.delete(cliente)
+@ruta_usuario.route("/deleteusuario/<id>", methods=["GET"])
+def deleteusuario(id):
+    usuario = Usuarios.query.get(id)
+    db.session.delete(usuario)
     db.session.commit()
-    return jsonify(cliente_schema.dump(cliente))
+    return jsonify(usuario_schema.dump(usuario))
  
  
