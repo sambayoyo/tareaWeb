@@ -1,24 +1,23 @@
 from db import app, db, ma
-
-class Alertas(db.Model):
+class Alertas (db.Model):
     __tablename__ = "tblAlertas"
 
-    id_alerta = db.Column(db.Integer, primary_key = True)
-    Tipo_alerta = db.Column(db.String(50))
-    Descripcion_alerta = db.Column(db.String(50))
-    Latitud_alerta = db.Column(db.Integer)
-    Longitud_alerta = db.Column(db.Integer)
-    Fecha_hora=db.Column(db.Date)
+    id_u = db.Column(db.Integer(), db.ForeignKey('tblUsuarios.id'))
+    texto = db.Column(db.String(50))
+    longitud_alerta = db.Column(db.Integer)
+    latitud_alerta = db.Column(db.Integer)
+    fecha_hora = db.Column(db.Date)
 
-    def __init__(self, tipo_alerta,descripcion,latitud,longitud,fecha):
-        self.Tipo_alerta = tipo_alerta
-        self.Descripcion_alerta = descripcion
-        self.Latitud_alerta = latitud
-        self.Longitud_alerta = longitud
-        self.Fecha_hora= fecha
+    def __init__(self, id_u, texto, longitud, latitud, fecha):
+        self.id_u = id_u
+        self.texto = texto
+        self.longitud_alerta = longitud
+        self.latitud_alerta = latitud
+        self.fecha_hora= fecha
+
 with app.app_context():
     db.create_all()
 
 class AlertasSchema(ma.Schema):
     class Meta:
-        fields = ('id_alerta', 'tipo_alerta','descripcion_alerta','latitud_alerta','longitud_alerta','fecha_hora')       
+        fields = ('id_u', 'texto', 'longitud_alerta', 'latitud_alerta', 'fecha_hora')       

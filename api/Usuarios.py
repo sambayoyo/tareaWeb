@@ -1,9 +1,9 @@
 from flask import Blueprint, jsonify, request,json
 from db import db, app, ma
-from models.Clientes import Clientes, ClienteSchema
+from models.Usuarios import Clientes, ClienteSchema
 
 ruta_cliente = Blueprint("ruta_cliente",__name__)
-#routes_cliente = Blueprint("routes_cliente", __name__)
+
 
 cliente_schema = ClienteSchema()
 clientes_schema = ClienteSchema(many=True)
