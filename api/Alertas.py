@@ -3,7 +3,6 @@ from db import db, app, ma
 from models.Alertas import Alertas, AlertasSchema
 
 ruta_alertas = Blueprint("ruta_alertas",__name__)
-#routes_cliente = Blueprint("routes_cliente", __name__)
 
 alerta_schema = AlertasSchema()
 alertas_schema = AlertasSchema(many=True)
@@ -16,24 +15,25 @@ def alertas():
 
 @ruta_alertas.route("/savealerta", methods=["POST"])
 def savealerta():
-    nombre = request.json['nombre']
-    new_alerta = Alertas(nombre)
-    db.session.add(new_alerta)
+    data = request.get_json()
+    db.session.add(Alertas(**data))
     db.session.commit()
-    return "Datos guardados con exitos"
+    return alertas_schema.jsonify(Alertas(**data))
 
 @ruta_alertas.route("/updatealerta", methods=["PUT"])
 def updatealerta():
-    id = request.json['id']
-    nombre = request.json['nombre']
-    nAlerta = Alertas.query.get(id) #Select * from Cliente where id = id
-    nAlerta.nombre = nombre
+    Fecha_creacion = request.json['fecha_creacion']
+    nalertas = Alertas.query.get(Fecha_creacion)
+    nalertas.Texto = request.json['texto']
+    nalertas.Longitud = request.json['longitud_alerta']
+    nalertas.Latitud = request.json['latitud_alerta']
+    nalertas.Fecha_creacion = request.json['fecha_creacion']
     db.session.commit()
     return "Datos Actualizado con exitos"
 
 @ruta_alertas.route("/deletealerta/<id>", methods=["GET"])
-def deletecliente(id):
-    alerta = Alertas.query.get(id)
+def deletealerta(fecha_hora):
+    alerta = Alertas.query.get(fecha_hora)
     db.session.delete(alerta)
     db.session.commit()
     return jsonify(alerta_schema.dump(alerta))

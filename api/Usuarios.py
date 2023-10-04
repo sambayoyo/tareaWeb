@@ -5,12 +5,12 @@ from models.Usuarios import Usuarios, UsuarioSchema
 ruta_usuario = Blueprint("ruta_usuario",__name__)
 
 usuario_schema = UsuarioSchema()
-usuario_schema = UsuarioSchema(many=True)
+usuarios_schema = UsuarioSchema(many=True)
 
 @ruta_usuario.route("/usuarios", methods=["GET"])
 def usuarios():
     resultall = Usuarios.query.all()
-    result = usuario_schema.dump(resultall)
+    result = usuarios_schema.dump(resultall)
     return jsonify(result)
 
 @ruta_usuario.route("/saveusuario", methods=["POST"])

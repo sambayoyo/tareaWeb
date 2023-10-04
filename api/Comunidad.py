@@ -6,12 +6,12 @@ ruta_comunidad = Blueprint("ruta_comunidad",__name__)
 
 
 comunidad_schema = ComunidadSchema()
-comunidad_schema = ComunidadSchema(many=True)
+comunidads_schema = ComunidadSchema(many=True)
 
 @ruta_comunidad.route("/Comunidad", methods=["GET"])
 def comunidad():
     resultall = Comunidad.query.all()# Select * from Ruta;
-    result = comunidad_schema.dump(resultall)
+    result = comunidads_schema.dump(resultall)
     return jsonify(result)
 
 
