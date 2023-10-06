@@ -11,11 +11,11 @@ class Puntos_E(db.Model):
     def __init__(self, longitud, latitud, tipo_punto):
         self.longitud = longitud
         self.latitud = latitud
-        self.Tipo_punto = tipo_punto
+        self.tipo_punto = tipo_punto
 
 with app.app_context():
     db.create_all()
 
 class Puntos_ESchema(ma.Schema):
     class Meta:
-        fields = ('id_PuntoE', 'Longitud', 'Latitud', 'Tipo_punto')
+        fields = ('id_PuntoE', 'Longitud', 'Latitud', 'tipo_punto')
