@@ -23,9 +23,11 @@ def saveruta():
 @ruta_rutas.route("/updateruta", methods=["PUT"])
 def updateruta():
     id = request.json['id_post']
+    dir_inicio = request.json['dir_inicio']
+    dir_fin = request.json['dir_fin']
     nalertas = Rutas.query.get(id)
-    nalertas.dir_inicio = request.json['dir_inicio']
-    nalertas.dir_fin = request.json['dir_fin']
+    nalertas.dir_inicio = dir_inicio
+    nalertas.dir_fin = dir_fin
     db.session.commit()
     return "Datos Actualizado con exitos"
 

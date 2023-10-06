@@ -23,9 +23,11 @@ def savecomments():
 @ruta_comments.route("/updatecomments", methods=["PUT"])
 def updatecomments():
     id = request.json['id_comentario']
+    contenido = request.json['contenido']
+    fecha_hora = request.json['fecha_hora']
     nalertas = Comments.query.get(id)
-    nalertas.contenido = request.json['contenido']
-    nalertas.fecha_hora = request.json['fecha_hora']
+    nalertas.contenido = contenido
+    nalertas.fecha_hora = fecha_hora
     db.session.commit()
     return "Datos Actualizado con exitos"
 

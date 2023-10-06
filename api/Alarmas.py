@@ -23,8 +23,9 @@ def savealarma():
 @ruta_alarmas.route("/updatealarma", methods=["PUT"])
 def updatealarma():
     id = request.json['id_alarma']
+    tipo = request.json['tipo']
     nalertas = Alarmas_ruta.query.get(id)
-    nalertas.tipo = request.json['tipo']
+    nalertas.tipo = tipo
     db.session.commit()
     return "Datos Actualizado con exitos"
 

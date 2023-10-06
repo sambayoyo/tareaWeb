@@ -24,10 +24,13 @@ def savepuntos_estrategicos():
 @ruta_puntos_estrategicos.route("/updatepunto", methods=["PUT"])
 def updatepuntos_estrategicos():
     id_PuntoE = request.json['id_PuntoE']
+    longitud = request.json['longitud']
+    latitud = request.json['latitud']
+    tipo_punto = request.json['tipo_punto']
     npuntos_estrategicos = Puntos_E.query.get(id_PuntoE)
-    npuntos_estrategicos.longitud = request.json['longitud']
-    npuntos_estrategicos.latitud = request.json['latitud']
-    npuntos_estrategicos.tipo_punto = request.json['tipo_punto']
+    npuntos_estrategicos.longitud = longitud
+    npuntos_estrategicos.latitud = latitud
+    npuntos_estrategicos.tipo_punto = tipo_punto
     db.session.commit()
     return "Datos Actualizado con exitos"
 

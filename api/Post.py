@@ -23,10 +23,13 @@ def savepost():
 @ruta_post.route("/updatepost", methods=["PUT"])
 def updatepost():
     id = request.json['id_post']
+    titulo = request.json['titulo']
+    contenido = request.json['contenido']
+    fecha_hora = request.json['fecha_hora']
     nalertas = Post.query.get(id)
-    nalertas.titulo = request.json['titulo']
-    nalertas.contenido = request.json['contenido']
-    nalertas.fecha_hora = request.json['fecha_hora']
+    nalertas.titulo = titulo
+    nalertas.contenido = contenido
+    nalertas.fecha_hora = fecha_hora
     db.session.commit()
     return "Datos Actualizado con exitos"
 
