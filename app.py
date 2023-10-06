@@ -3,23 +3,21 @@ from flask import Flask, render_template, request
 app = Flask("/")
 
 
-from api.Usuarios import ruta_usuario
-from api.Ruta import  ruta_ruta
-from api.Alertas import ruta_alertas
-from api.Comentarios import ruta_comentarios
-from api.Comunidad import ruta_comunidad
-from api.Puntos_estrategicos import ruta_Puntos_estrategicos
-from api.Ciclovias import ruta_ciclovias
+from api.Alarmas import ruta_alarmas
+from api.Comments import  ruta_comments
+from api.Post import ruta_post
+from api.Puntos_E import ruta_puntos_estrategicos
+from api.Rutas import ruta_rutas
+from api.Users import ruta_user
 
 
 
-app.register_blueprint(ruta_usuario, url_prefix="/api")
-app.register_blueprint(ruta_ruta, url_prefix="/api")
-app.register_blueprint(ruta_alertas, url_prefix="/api")
-app.register_blueprint(ruta_comunidad, url_prefix="/api")
-app.register_blueprint(ruta_comentarios, url_prefix="/api")
-app.register_blueprint(ruta_Puntos_estrategicos, url_prefix="/api")
-app.register_blueprint(ruta_ciclovias, url_prefix="/api")
+app.register_blueprint(ruta_alarmas, url_prefix="/api")
+app.register_blueprint(ruta_comments, url_prefix="/api")
+app.register_blueprint(ruta_post, url_prefix="/api")
+app.register_blueprint(ruta_puntos_estrategicos, url_prefix="/api")
+app.register_blueprint(ruta_rutas, url_prefix="/api")
+app.register_blueprint(ruta_user, url_prefix="/api")
 
 @app.route("/")
 def home():
