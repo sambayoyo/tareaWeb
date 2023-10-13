@@ -1,5 +1,7 @@
 from flask import Flask, redirect, request, jsonify, json, session, render_template
-from config.db import app
+from config.db import app, db
+from models.Users import Users, UsersSchema
+
 
 
 
@@ -9,6 +11,8 @@ from api.Alarmas import ruta_alarmas
 from api.Comments import ruta_comments
 from api.Puntos_E import ruta_puntos_estrategicos
 
+user_schema = UsersSchema()
+users_schema = UsersSchema(many=True)
 
 
 
@@ -25,6 +29,20 @@ app.register_blueprint(ruta_puntos_estrategicos, url_prefix="/api_puntos_estrate
 @app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route("/ingreso", methods = ["POST"])
+def validacion_login():
+    email = request.form['email']
+    password = request.form['password']
+    user = db.session.query(Users.id_user).filter(Users.email == email, Users.password == password).all()
+    resultado = user_schema.dump(user)
+    if len(resultado)>0:        
+        session['usuario'] = email
+        return redirect('/home')
+    else:
+        return redirect('/')
+
+    
 
 @app.route("/login")
 def login():
