@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request,json
-from db import db, app, ma
+from config.db import db
 from models.Comments import Comments, CommentsSchema
 
 ruta_comments = Blueprint("ruta_comments",__name__)
@@ -15,17 +15,22 @@ def comments():
 
 @ruta_comments.route("/savecomments", methods=["POST"])
 def savecomments():
-    data = request.get_json()
-    db.session.add(Comments(**data))
+    id_post = request.json['id_post']
+    contenido = request.json['contenido']
+    fecha_hora = request.json['fecha_hora']
+    new_comment = Comments(id_post, contenido, fecha_hora)
+    db.session.add(new_comment)
     db.session.commit()
-    return comment_schema.jsonify(Comments(**data))
+    return "datos guardados"
 
 @ruta_comments.route("/updatecomments", methods=["PUT"])
 def updatecomments():
     id = request.json['id_comentario']
+    id_post = request.json['id_post']
     contenido = request.json['contenido']
     fecha_hora = request.json['fecha_hora']
     nalertas = Comments.query.get(id)
+    nalertas.id_post = id_post
     nalertas.contenido = contenido
     nalertas.fecha_hora = fecha_hora
     db.session.commit()

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request,json
-from db import db, app, ma
+from config.db import db
 from models.Rutas import Rutas, RutasSchema
 
 ruta_rutas = Blueprint("ruta_rutas",__name__)
@@ -15,17 +15,22 @@ def rutas():
 
 @ruta_rutas.route("/saveruta", methods=["POST"])
 def saveruta():
-    data = request.get_json()
-    db.session.add(Rutas(**data))
+    id_u = request.json['id_u']
+    dir_inicio = request.json['dir_inicio']
+    dir_fin = request.json['dir_fin']
+    new_ruta = Rutas(id_u, dir_inicio, dir_fin)
+    db.session.add(new_ruta)
     db.session.commit()
-    return ruta_schema.jsonify(Rutas(**data))
+    return "datos guardados"
 
 @ruta_rutas.route("/updateruta", methods=["PUT"])
 def updateruta():
-    id = request.json['id_post']
+    id = request.json['id_ruta']
+    id_u = request.json['id_u']
     dir_inicio = request.json['dir_inicio']
     dir_fin = request.json['dir_fin']
     nalertas = Rutas.query.get(id)
+    nalertas.id_u = id_u
     nalertas.dir_inicio = dir_inicio
     nalertas.dir_fin = dir_fin
     db.session.commit()

@@ -1,12 +1,12 @@
-from db import db, app, ma
+from config.db import db, app, ma
 
 class Comments(db.Model):
     __tablename__ = "tblComments"
 
     id_comentario = db.Column(db.Integer, primary_key = True)
     id_post = db.Column(db.Integer, db.ForeignKey('tblPost.id_post'))
-    contenido = db.Column(db.String)
-    fecha_hora = db.Column(db.Date)
+    contenido = db.Column(db.Text)
+    fecha_hora = db.Column(db.DateTime)
     
 
     def __init__(self, id_post, contenido, fecha_hora):

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request,json
-from db import db, app, ma
-from models.Post import Post, PostSchema
+from ..config.db import db, app, ma
+from ..models.Post import Post, PostSchema
 
 ruta_post = Blueprint("ruta_post",__name__)
 
@@ -15,18 +15,24 @@ def posts():
 
 @ruta_post.route("/savepost", methods=["POST"])
 def savepost():
-    data = request.get_json()
-    db.session.add(Post(**data))
+    id_user = request.json['id_user']
+    titulo = request.json['titulo']
+    contenido = request.json['contenido']
+    fecha_hora = request.json['fecha_hora']
+    new_post = Post(id_user, titulo, contenido, fecha_hora)
+    db.session.add(new_post)
     db.session.commit()
-    return post_schema.jsonify(Post(**data))
+    return "datos guardados"
 
 @ruta_post.route("/updatepost", methods=["PUT"])
 def updatepost():
     id = request.json['id_post']
+    id_u = request.json['id_user']
     titulo = request.json['titulo']
     contenido = request.json['contenido']
     fecha_hora = request.json['fecha_hora']
     nalertas = Post.query.get(id)
+    nalertas.id_u = id_u
     nalertas.titulo = titulo
     nalertas.contenido = contenido
     nalertas.fecha_hora = fecha_hora

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request,json
-from db import db, app, ma
+from config.db import db
 from models.Alarmas_ruta import Alarmas_ruta, Alarmas_rutaSchema
 
 ruta_alarmas = Blueprint("ruta_alarmas",__name__)
@@ -15,16 +15,20 @@ def alarmas():
 
 @ruta_alarmas.route("/savealarma", methods=["POST"])
 def savealarma():
-    data = request.get_json()
-    db.session.add(Alarmas_ruta(**data))
+    id_r = request.json['id_r']
+    tipo = request.json['tipo']
+    new_alarma = Alarmas_ruta(id_r, tipo)
+    db.session.add(new_alarma)
     db.session.commit()
-    return alarma_schema.jsonify(Alarmas_ruta(**data))
+    return "datos guardados"
 
 @ruta_alarmas.route("/updatealarma", methods=["PUT"])
 def updatealarma():
     id = request.json['id_alarma']
+    id_r = request.json['id_r']
     tipo = request.json['tipo']
     nalertas = Alarmas_ruta.query.get(id)
+    nalertas.id_r = id_r
     nalertas.tipo = tipo
     db.session.commit()
     return "Datos Actualizado con exitos"

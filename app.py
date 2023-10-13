@@ -1,23 +1,28 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, request, jsonify, json, session, render_template
+from config.db import app, db
 
-app = Flask("/")
 
 
+from api.Users import ruta_user
+from api.Rutas import ruta_rutas
+from api.Post import ruta_post
 from api.Alarmas import ruta_alarmas
 from api.Comments import  ruta_comments
-from api.Post import ruta_post
 from api.Puntos_E import ruta_puntos_estrategicos
-from api.Rutas import ruta_rutas
-from api.Users import ruta_user
 
 
 
+
+app.register_blueprint(ruta_user, url_prefix="/api")
+app.register_blueprint(ruta_rutas, url_prefix="/api")
+app.register_blueprint(ruta_post, url_prefix="/api")
 app.register_blueprint(ruta_alarmas, url_prefix="/api")
 app.register_blueprint(ruta_comments, url_prefix="/api")
-app.register_blueprint(ruta_post, url_prefix="/api")
 app.register_blueprint(ruta_puntos_estrategicos, url_prefix="/api")
-app.register_blueprint(ruta_rutas, url_prefix="/api")
-app.register_blueprint(ruta_user, url_prefix="/api")
+
+
+
+
 
 @app.route("/")
 def home():
@@ -38,4 +43,4 @@ def nuevoComentario():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=3000, debug=True)

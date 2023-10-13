@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify, request,json
-from db import db, app, ma
+from flask import Blueprint, jsonify, request
+from config.db import db
 from models.Users import Users, UsersSchema
 
 ruta_user = Blueprint("ruta_user",__name__)
@@ -10,19 +10,22 @@ users_schema = UsersSchema(many=True)
 @ruta_user.route("/users", methods=["GET"])
 def users():
     resultall = Users.query.all()
-    result = UsersSchema.dump(resultall)
+    result = users_schema.dump(resultall)
     return jsonify(result)
 
 @ruta_user.route("/saveuser", methods=["POST"])
 def saveuser():
-    data = request.get_json()
-    db.session.add(Users(**data))
+    email = request.json['email']
+    password = request.json['password']
+    fecha_registro = request.json['fecha_registro']
+    new_user = Users(email, password, fecha_registro)
+    db.session.add(new_user)
     db.session.commit()
-    return users_schema.jsonify(Users(**data))
+    return "datos guardados"
 
 @ruta_user.route("/updateuser", methods=["PUT"])
 def updateuser():
-    id = request.json['id']
+    id = request.json['id_user']
     email = request.json['email']
     password = request.json['password']
     fecha_registro = request.json['fecha_registro']

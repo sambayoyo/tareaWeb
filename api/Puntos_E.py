@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from db import db
+from config.db import db
 from models.Puntos_E import Puntos_E, Puntos_ESchema
 
 ruta_puntos_estrategicos = Blueprint("ruta_puntos_estrategicos",__name__)
@@ -16,18 +16,24 @@ def puntos_estrategicos():
 
 @ruta_puntos_estrategicos.route("/savepunto", methods=["POST"])
 def savepuntos_estrategicos():
-    data = request.get_json()
-    db.session.add(Puntos_E(**data))
+    id_ruta = request.json['id_ruta']
+    longitud = request.json['longitud']
+    latitud = request.json['latitud']
+    tipo_punto = request.json['tipo_punto']
+    new_punto = Puntos_E(id_ruta, longitud, latitud, tipo_punto)
+    db.session.add(new_punto)
     db.session.commit()
-    return punto_estrategicoschema.jsonify(Puntos_E(**data))
+    return "datos guardados"
 
 @ruta_puntos_estrategicos.route("/updatepunto", methods=["PUT"])
 def updatepuntos_estrategicos():
     id_PuntoE = request.json['id_PuntoE']
+    id_ruta = request.json['id_ruta']
     longitud = request.json['longitud']
     latitud = request.json['latitud']
     tipo_punto = request.json['tipo_punto']
     npuntos_estrategicos = Puntos_E.query.get(id_PuntoE)
+    npuntos_estrategicos.id_ruta = id_ruta
     npuntos_estrategicos.longitud = longitud
     npuntos_estrategicos.latitud = latitud
     npuntos_estrategicos.tipo_punto = tipo_punto
