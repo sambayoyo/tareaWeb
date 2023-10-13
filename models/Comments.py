@@ -4,7 +4,7 @@ class Comments(db.Model):
     __tablename__ = "tblComments"
 
     id_comentario = db.Column(db.Integer, primary_key = True)
-    id_user = db.Column(db.Integer, ForeignKey = "tblUsers.id_user")
+    id_user = db.Column(db.Integer, db.ForeignKey("tblUsers.id_user"))
     contenido = db.Column(db.Text)
     fecha_hora = db.Column(db.DateTime)
     
