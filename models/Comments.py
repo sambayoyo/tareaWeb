@@ -4,13 +4,13 @@ class Comments(db.Model):
     __tablename__ = "tblComments"
 
     id_comentario = db.Column(db.Integer, primary_key = True)
-    id_post = db.Column(db.Integer, db.ForeignKey('tblPost.id_post'))
+    id_user = db.Column(db.Integer, ForeignKey = "tblUsers.id_user")
     contenido = db.Column(db.Text)
     fecha_hora = db.Column(db.DateTime)
     
 
-    def __init__(self, id_post, contenido, fecha_hora):
-        self.id_post = id_post
+    def __init__(self, id_user, contenido, fecha_hora):
+        self.id_user = id_user
         self.contenido = contenido
         self.fecha_hora = fecha_hora
 
@@ -19,4 +19,4 @@ with app.app_context():
 
 class CommentsSchema(ma.Schema):
     class Meta:
-        fields = ('id_comentario', 'id_post', 'contenido', 'fecha_hora')
+        fields = ('id_comentario', 'id_user', 'contenido', 'fecha_hora')

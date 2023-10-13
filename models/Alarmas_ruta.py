@@ -4,7 +4,7 @@ class Alarmas_ruta (db.Model):
 
     id_alarma = db.Column(db.Integer, primary_key = True)
     id_r = db.Column(db.Integer, db.ForeignKey('tblRutas.id_ruta'))
-    tipo = db.Column(db.String)
+    tipo = db.Column(db.String(20))
 
     def __init__(self, id_r, tipo):
         self.id_r = id_r

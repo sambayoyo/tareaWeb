@@ -4,6 +4,7 @@ class Users(db.Model):
     __tablename__ = "tblUsers"
 
     id_user = db.Column(db.Integer, primary_key = True)
+    usuario = db.Column(db.String(20))
     email = db.Column(db.String(50), unique = True)
     password = db.Column(db.String(50))
     fecha_registro = db.Column(db.Date)
@@ -18,4 +19,4 @@ with app.app_context():
 
 class UsersSchema(ma.Schema):
     class Meta:
-        fields = ('id_user', 'email', 'password', 'fecha_registro')
+        fields = ('id_user', 'usuario', 'email', 'password', 'fecha_registro')

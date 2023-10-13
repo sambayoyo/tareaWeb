@@ -15,10 +15,10 @@ def comments():
 
 @ruta_comments.route("/savecomments", methods=["POST"])
 def savecomments():
-    id_post = request.json['id_post']
+    id_user = request.json['id_user']
     contenido = request.json['contenido']
     fecha_hora = request.json['fecha_hora']
-    new_comment = Comments(id_post, contenido, fecha_hora)
+    new_comment = Comments(id_user, contenido, fecha_hora)
     db.session.add(new_comment)
     db.session.commit()
     return "datos guardados"
@@ -26,11 +26,11 @@ def savecomments():
 @ruta_comments.route("/updatecomments", methods=["PUT"])
 def updatecomments():
     id = request.json['id_comentario']
-    id_post = request.json['id_post']
+    id_user = request.json['id_user']
     contenido = request.json['contenido']
     fecha_hora = request.json['fecha_hora']
     nalertas = Comments.query.get(id)
-    nalertas.id_post = id_post
+    nalertas.id_user = id_user
     nalertas.contenido = contenido
     nalertas.fecha_hora = fecha_hora
     db.session.commit()

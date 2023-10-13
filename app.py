@@ -5,20 +5,18 @@ from config.db import app, db
 
 from api.Users import ruta_user
 from api.Rutas import ruta_rutas
-from api.Post import ruta_post
 from api.Alarmas import ruta_alarmas
-from api.Comments import  ruta_comments
+
 from api.Puntos_E import ruta_puntos_estrategicos
 
 
 
 
-app.register_blueprint(ruta_user, url_prefix="/api")
-app.register_blueprint(ruta_rutas, url_prefix="/api")
-app.register_blueprint(ruta_post, url_prefix="/api")
-app.register_blueprint(ruta_alarmas, url_prefix="/api")
-app.register_blueprint(ruta_comments, url_prefix="/api")
-app.register_blueprint(ruta_puntos_estrategicos, url_prefix="/api")
+app.register_blueprint(ruta_user, url_prefix="/api_user")
+app.register_blueprint(ruta_rutas, url_prefix="/api_rutas")
+app.register_blueprint(ruta_alarmas, url_prefix="/api_alarmas")
+
+app.register_blueprint(ruta_puntos_estrategicos, url_prefix="/api_puntos_estrategicos")
 
 
 
