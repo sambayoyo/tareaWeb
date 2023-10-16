@@ -5,9 +5,9 @@ class Puntos_E(db.Model):
 
     id_PuntoE = db.Column(db.Integer, primary_key = True)
     id_ruta = db.Column(db.Integer, db.ForeignKey('tblRutas.id_ruta'))
-    longitud = db.column(db.String(20))
-    latitud = db.column(db.String(20))
-    tipo_punto = db.column(db.String)
+    longitud = db.Column(db.String(20))
+    latitud = db.Column(db.String(20))
+    tipo_punto = db.Column(db.String)
 
     def __init__(self, id_ruta, longitud, latitud, tipo_punto):
         self.id_ruta = id_ruta
@@ -20,4 +20,4 @@ with app.app_context():
 
 class Puntos_ESchema(ma.Schema):
     class Meta:
-        fields = ('id_PuntoE', 'id_ruta', 'Longitud', 'Latitud', 'tipo_punto')
+        fields = ('id_PuntoE', 'id_ruta', 'longitud', 'latitud', 'tipo_punto')
