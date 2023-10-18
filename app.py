@@ -30,17 +30,23 @@ app.register_blueprint(ruta_puntos_estrategicos, url_prefix="/api_puntos_estrate
 def home():
     return render_template("index.html")
 
+@app.route("/registro", methods = ["POST"])
+def registrar():
+    usuario = request.form['usuario']
+    email = request.form['email']
+    password = request.form['password']
+
+
 @app.route("/ingreso", methods = ["POST"])
 def validacion_login():
     email = request.form['email']
     password = request.form['password']
-    user = db.session.query(Users.id_user).filter(Users.email == email, Users.password == password).all()
-    resultado = user_schema.dump(user)
-    if len(resultado)>0:        
-        session['usuario'] = email
-        return redirect('/home')
-    else:
+    user = db.session.query(Users.id_user).filter(Users.email == email, Users.password == password).first()
+    session['user'] = user
+    if user in session:        
         return redirect('/')
+    else:
+        return redirect('/login')
 
     
 
@@ -53,9 +59,9 @@ def comunidad():
     return render_template("comunidad.html")
 
 
-@app.route("/nuevoComentario", methods = ["GET", "POST"])
-def nuevoComentario():
-    return render_template("comunidad.html")
+@app.route("/mapa", methods = ["GET", "POST"])
+def mapa():
+    return render_template("mapa1.html")
 
 
 if __name__ == "__main__":

@@ -11,3 +11,14 @@ h6 {
   margin-left: 10px;
   display: inline;
 }
+
+.cuadro {
+  display: flex;
+  flex-direction: row-reverse;
+  
+}
+
+.cuadro div:first-of-type {
+  position: relative;
+  left: 15%;
+}
