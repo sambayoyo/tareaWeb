@@ -22,3 +22,14 @@ h6 {
   position: relative;
   left: 15%;
 }
+
+label {
+  margin: 10px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+}

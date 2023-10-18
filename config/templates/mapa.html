@@ -1,24 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.2.2/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.2.2/mapbox-gl-directions.css' type='text/css' />
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="static/styles/mapa.css">
+    <link rel="stylesheet" href="static/styles/styles.css">
     <title>Mapa</title>
-
-    
 </head>
-
 <body>
-
     <div id="map"></div>
 
+    <div class="info-box info-box-left">
+        <h2 class="casual-heading">Opciones</h2>
+        <label for="opciones">Rutas:</label>
+        <select id="opciones">
+            <option value="opcion1">Ruta 1</option>
+            <option value="opcion2">Ruta 2</option>
+        </select>
+        <label for="texto">Texto:</label>
+        <input type="text" id="texto">
+        <div class="casual-button-container">
+            <button class="casual-button">+</button>
+            <button class="casual-button">✎</button>
+            <button class="casual-button">🔍</button>
+            <button class="casual-button">🗑️</button>
+        </div>
+    </div>
+
+    <div class="info-box info-box-right">
+        <h2 class="casual-heading">Puntos estratégicos</h2>
+        <label for="opciones">Rutas:</label>
+        <select id="opciones">
+            <option value="opcion1">Ruta 1</option>
+            <option value="opcion2">Ruta 2</option>
+        </select>
+        <label for="longitud">Longitud:</label>
+        <input type="text" id="longitud">
+        <label for="latitud">Latitud:</label>
+        <input type="text" id="latitud">
+        <label for="tipo-punto">Tipo de Punto:</label>
+        <input type="text" id="tipo-punto">
+        <div class="casual-button-container">
+            <button class="casual-button">+</button>
+            <button class="casual-button">✎</button>
+            <button class="casual-button">🔍</button>
+            <button class="casual-button">🗑️</button>
+        </div>
+    </div>
+
+    <div class="info-box info-box-bottom">
+        <h2 class="casual-heading">Marcadores</h2>
+        <button class="casual-button" id="add-marker">📍</button>
+        <button class="casual-button" id="remove-markers">🗑️</button>
+        <button class="casual-button" id="trace-route">🖋️</button>
+    </div>
+
     <script src="static/js/mapa.js"></script>
-
 </body>
-
 </html>

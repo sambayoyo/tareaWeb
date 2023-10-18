@@ -30,12 +30,43 @@ app.register_blueprint(ruta_puntos_estrategicos, url_prefix="/api_puntos_estrate
 def home():
     return render_template("index.html")
 
+'''@app.route("/Registro", methods=["POST"]) #Para enviar o subir un registro def saveusuario():  
+try: 
+username=request.form['usuario']
+password=request.form['contrasena']
+nombre=request.form['nombre']
+print(username,password,nombre)
+new_usuario = usuario.query.filter_by(username=username).first()  
+if new_usuario is None and username != '' and password != '' and nombre != '': 
+                new_usuarios = usuario(username,password,nombre)
+                db.session.add(new_usuarios)         
+                db.session.commit()           
+                return redirect ('/login')    
+                else:        
+                return redirect ('/sign')    
+                except Exception as e:   
+                return f"Hubo un error {str(e)}"'''
+
+
+
 @app.route("/registro", methods = ["POST"])
 def registrar():
     usuario = request.form['usuario']
     email = request.form['email']
     password = request.form['password']
-
+    password1 = request.form['password1']
+    fecha = (2023, 10, 18)
+    user = Users.query.filter_by(email=email).first()
+    if user is None:
+        if password == password1:
+            new_usuarios = Users(usuario, email, password, fecha)
+            db.session.add(new_usuarios)         
+            db.session.commit()
+            return redirect ('/')
+        else:
+            return "Las contraseñas no coinciden"
+    else:
+        return "Usuario ya existe"
 
 @app.route("/ingreso", methods = ["POST"])
 def validacion_login():
@@ -48,7 +79,11 @@ def validacion_login():
     else:
         return redirect('/login')
 
-    
+@app.route("/cerrar", methods = ["POST"])
+def cerrar_sesion():
+    session.pop('user', None)
+    return redirect('/login')
+
 
 @app.route("/login")
 def login():
@@ -61,8 +96,8 @@ def comunidad():
 
 @app.route("/mapa", methods = ["GET", "POST"])
 def mapa():
-    return render_template("mapa1.html")
+    return render_template("mapa.html")
 
 
 if __name__ == "__main__":
-    app.run(port=3000, debug=True)
+    app.run(port=5000, debug=True)
