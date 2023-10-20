@@ -3,8 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtYmF5b3lvIiwiYSI6ImNsbnV5NXMybzA0Z28ycW15b
 let map = new mapboxgl.Map({
 	container: 'map',
 	style: 'mapbox://styles/mapbox/streets-v10',
-	center: [-74.806984, 11.004107],
-	zoom: 12
+	center: [-74.806984, 10.988997],
+	zoom: 13
 });
 
 
@@ -56,24 +56,35 @@ function traceRoute(startPoint, endPoint) {
                     }
                 },
                 paint: {
-                    'line-width': 2,
-                    'line-color': '#007cbf'
+                    'line-width': 5,
+                    'line-color': '#007cbb'
                 }
             });
         });
 }
 
 // Evento al hacer clic en el mapa para añadir un marcador
-map.on('click', function(e) {
-    var longitude = e.lngLat.lng;
-    var latitude = e.lngLat.lat;
-    var marker = addMarker(longitude, latitude);
-
-    // Si hay al menos dos marcadores, traza la ruta
-    if (markers.length === 2) {
+map.on('click', function (e) {
+    if (markers.length < 2) { // Limita la cantidad de marcadores a 2
+      var longitude = e.lngLat.lng;
+      var latitude = e.lngLat.lat;
+      alert('longitud: ' + longitude + ' latitud: ' + latitude)
+      var marker = addMarker(longitude, latitude);
+      markers.push(marker);
+  
+      // Si hay al menos dos marcadores, traza la ruta
+      if (markers.length === 2) {
         traceRoute(markers[0].getLngLat(), markers[1].getLngLat());
+      }
     }
-});
+  });
+  
+  function addMarker(longitude, latitude) {
+    var marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
+    return marker;
+  }
+
+
 
 // Evento para eliminar todos los marcadores
 document.getElementById('add-marker').addEventListener('click', function() {

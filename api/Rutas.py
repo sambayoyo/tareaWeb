@@ -16,9 +16,11 @@ def rutas():
 @ruta_rutas.route("/saveruta", methods=["POST"])
 def saveruta():
     id_u = request.json['id_u']
-    dir_inicio = request.json['dir_inicio']
-    dir_fin = request.json['dir_fin']
-    new_ruta = Rutas(id_u, dir_inicio, dir_fin)
+    longitud1 = request.json['longitud1']
+    latitud1 = request.json['latitud1']
+    longitud2 = request.json['longitud2']
+    latitud2 = request.json['latitud2']
+    new_ruta = Rutas(id_u, longitud1, latitud1, longitud2, latitud2)
     db.session.add(new_ruta)
     db.session.commit()
     return "datos guardados"
@@ -27,12 +29,16 @@ def saveruta():
 def updateruta():
     id = request.json['id_ruta']
     id_u = request.json['id_u']
-    dir_inicio = request.json['dir_inicio']
-    dir_fin = request.json['dir_fin']
+    longitud1 = request.json['longitud1']
+    latitud1 = request.json['latitud1']
+    longitud2 = request.json['longitud2']
+    latitud2 = request.json['latitud2']
     nalertas = Rutas.query.get(id)
     nalertas.id_u = id_u
-    nalertas.dir_inicio = dir_inicio
-    nalertas.dir_fin = dir_fin
+    nalertas.longitud1 = longitud1
+    nalertas.latitud1 = latitud1
+    nalertas.longitud2 = longitud2
+    nalertas.latitud2 = latitud2
     db.session.commit()
     return "Datos Actualizado con exitos"
 

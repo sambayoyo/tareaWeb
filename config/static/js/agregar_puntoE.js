@@ -1,14 +1,13 @@
-const formularioComentario = document.getElementById('formulario-comentario');
-formularioComentario.addEventListener('submit', (event) => {
-    
+const formularioPuntoE = document.getElementById('formulario-puntoE');
+formularioPuntoE.addEventListener('submit', (event) => {
     event.preventDefault();
-    alert("si")
-    const titulo = document.getElementById('titulo').value;
-    const id_user= document.getElementById('id_user').value;
-    const fechaHoraActual = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    const contenido = document.getElementById('contenido').value;
-    const datos = { id_user: id_user, contenido: contenido, titulo: titulo, fecha_hora: fechaHoraActual };
-    fetch('/api_comments/savecomments', {
+    const id_ruta = document.getElementById('id_ruta').value;
+    const longitud = document.getElementById('latitud').value;
+    const latitud = document.getElementById('latitud').value;
+    const tipo_punto = document.getElementById('tipo_punto').value;
+    alert("pasa")
+    const datos = { id_ruta: id_ruta, longitud:longitud, latitud:latitud, tipo_punto: tipo_punto };
+    fetch('/api_Puntos_E/savepunto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
@@ -16,12 +15,11 @@ formularioComentario.addEventListener('submit', (event) => {
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error(error));
-
-    window.onload()
+        window.onload()
 });
 
 // Selecciona el botón por su ID
-const botonNuevoComentario = document.querySelector('.btn.btn-primary.has-icon.btn-block');
+const botonNuevoComentario = document.getElementById('save-puntoE');
 
 // Agrega un manejador de eventos para el evento "mouseover"
 botonNuevoComentario.addEventListener('mouseover', () => {

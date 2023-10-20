@@ -1,14 +1,11 @@
-const formularioComentario = document.getElementById('formulario-comentario');
-formularioComentario.addEventListener('submit', (event) => {
-    
+const formularioAlarma = document.getElementById('formulario-alarma');
+formularioAlarma.addEventListener('submit', (event) => {
     event.preventDefault();
-    alert("si")
-    const titulo = document.getElementById('titulo').value;
-    const id_user= document.getElementById('id_user').value;
-    const fechaHoraActual = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    const contenido = document.getElementById('contenido').value;
-    const datos = { id_user: id_user, contenido: contenido, titulo: titulo, fecha_hora: fechaHoraActual };
-    fetch('/api_comments/savecomments', {
+    const id_r = document.getElementById('id_r').value;
+    const tipo = document.getElementById('tipo').value;
+    alert("pasa")
+    const datos = { id_r: id_r, tipo: tipo };
+    fetch('/api_Alarmas/savealarma', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
@@ -16,12 +13,11 @@ formularioComentario.addEventListener('submit', (event) => {
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error(error));
-
-    window.onload()
+        window.onload()
 });
 
 // Selecciona el botón por su ID
-const botonNuevoComentario = document.querySelector('.btn.btn-primary.has-icon.btn-block');
+const botonNuevoComentario = document.getElementById('save-alarm');
 
 // Agrega un manejador de eventos para el evento "mouseover"
 botonNuevoComentario.addEventListener('mouseover', () => {

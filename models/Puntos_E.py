@@ -7,7 +7,7 @@ class Puntos_E(db.Model):
     id_ruta = db.Column(db.Integer, db.ForeignKey('tblRutas.id_ruta'))
     longitud = db.Column(db.String(20))
     latitud = db.Column(db.String(20))
-    tipo_punto = db.Column(db.String)
+    tipo_punto = db.Column(db.String(200))
 
     def __init__(self, id_ruta, longitud, latitud, tipo_punto):
         self.id_ruta = id_ruta

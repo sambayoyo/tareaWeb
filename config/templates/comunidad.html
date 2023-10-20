@@ -33,21 +33,24 @@
     <ul id="comentarios-lista"></ul>
   </div>
 
-  <div class="main-body p-0">
-    <form action="" id="formulario-comentario">
-      <div class="group">
-        <label for="">Titulo</label>
-        <textarea name="titulo" id="titulo" cols="20" rows="4"></textarea>
-      </div>
-      <div class="group">
-        <label for="">Contenido</label>
-        <textarea name="contenido" id="contenido" cols="20" rows="4"></textarea>
-      </div>
-
-
-
-      <input type="submit" value="Nuevo comentario" class="btn btn-primary has-icon btn-block">
-    </form>
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div id="formulario-seccion" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); text-align: center;">
+      <form action="" id="formulario-comentario" style="max-width: 400px; margin: 0 auto;">
+        <div class="group" style="margin: 10px 0;">
+          <label for="titulo" style="font-weight: bold; color: #62ac18c3;">Titulo</label>
+          <textarea name="titulo" id="titulo" cols="20" rows="4" style="width: 100%; padding: 10px; border: 2px solid #62ac18c3; border-radius: 5px; font-size: 16px; color: #333;"></textarea>
+        </div>
+        <div class="group" style="margin: 10px 0;">
+          <label for="contenido" style="font-weight: bold; color: #62ac18c3;">Contenido</label>
+          <textarea name="contenido" id="contenido" cols="20" rows="4" style="width: 100%; padding: 10px; border: 2px solid #62ac18c3; border-radius: 5px; font-size: 16px; color: #333;"></textarea>
+        </div>
+        <input type="text" id="id_user" value="{{id_user}}" style="display: none;">
+        <input type="submit" value="Nuevo comentario" class="btn btn-primary has-icon btn-block" style="width: 100%; background-color: #62ac18c3; color: #fff; border: none; border-radius: 5px; padding: 15px 30px; cursor: pointer; font-weight: bold; transition: background-color 0.3s;">
+      </form>
+    </div>
+  </div>
+  
+  
 
 
 

@@ -17,17 +17,15 @@
     <div id="map"></div>
 
     <div class="info-box info-box-left">
-        <h2 class="casual-heading">Opciones</h2>
+        <h2 class="casual-heading">Alarmas</h2>
         <label for="opciones">Rutas:</label>
-        <select id="opciones">
-            <option value="opcion1">Ruta 1</option>
-            <option value="opcion2">Ruta 2</option>
-        </select>
+        <label for="texto">Id ruta:</label>
+        <input type="text" id="texto">
         <label for="texto">Texto:</label>
         <input type="text" id="texto">
         <div class="casual-button-container">
-            <button class="casual-button">+</button>
-            <button class="casual-button">✎</button>
+            <button class="casual-button" id="save-alarm">💾</button>
+            <button class="casual-button">✍</button>
             <button class="casual-button">🔍</button>
             <button class="casual-button">🗑️</button>
         </div>
@@ -36,10 +34,8 @@
     <div class="info-box info-box-right">
         <h2 class="casual-heading">Puntos estratégicos</h2>
         <label for="opciones">Rutas:</label>
-        <select id="opciones">
-            <option value="opcion1">Ruta 1</option>
-            <option value="opcion2">Ruta 2</option>
-        </select>
+        <label for="texto">Id ruta:</label>
+        <input type="text" id="texto">
         <label for="longitud">Longitud:</label>
         <input type="text" id="longitud">
         <label for="latitud">Latitud:</label>
@@ -47,8 +43,8 @@
         <label for="tipo-punto">Tipo de Punto:</label>
         <input type="text" id="tipo-punto">
         <div class="casual-button-container">
-            <button class="casual-button">+</button>
-            <button class="casual-button">✎</button>
+            <button class="casual-button" id="save-puntoE">💾</button>
+            <button class="casual-button">✍</button>
             <button class="casual-button">🔍</button>
             <button class="casual-button">🗑️</button>
         </div>
@@ -56,9 +52,19 @@
 
     <div class="info-box info-box-bottom">
         <h2 class="casual-heading">Marcadores</h2>
-        <button class="casual-button" id="add-marker">📍</button>
-        <button class="casual-button" id="remove-markers">🗑️</button>
-        <button class="casual-button" id="trace-route">🖋️</button>
+        <label for="texto">Id ruta:</label>
+        <input type="text" id="texto">
+        <label for="longitud">Longitud_incio:</label>
+        <input type="text" id="longitud">
+        <label for="latitud">Latitud_inicio:</label>
+        <input type="text" id="latitud">
+        <label for="longitud">Longitud_fin:</label>
+        <input type="text" id="longitud">
+        <label for="latitud">Latitud_fin:</label>
+        <input type="text" id="latitud">
+        <button class="casual-button" id="add-marker">🗑️</button>
+        <button class="casual-button" id="save-route">💾</button>
+        <button class="casual-button" id="search-route">🔍</button>
     </div>
 
     <script src="static/js/mapa.js"></script>

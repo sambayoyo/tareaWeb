@@ -16,9 +16,10 @@ def comments():
 @ruta_comments.route("/savecomments", methods=["POST"])
 def savecomments():
     id_user = request.json['id_user']
+    titulo = request.json['titulo']
     contenido = request.json['contenido']
     fecha_hora = request.json['fecha_hora']
-    new_comment = Comments(id_user, contenido, fecha_hora)
+    new_comment = Comments(id_user, contenido, titulo, fecha_hora)
     db.session.add(new_comment)
     db.session.commit()
     return "datos guardados"

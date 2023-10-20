@@ -9,7 +9,8 @@ class Users(db.Model):
     password = db.Column(db.String(50))
     fecha_registro = db.Column(db.Date)
 
-    def __init__(self, email, password, fecha_registro):
+    def __init__(self,usuario,  email, password, fecha_registro):
+        self.usuario = usuario
         self.email = email
         self.password = password
         self.fecha_registro = fecha_registro

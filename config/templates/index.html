@@ -18,16 +18,22 @@
       <span class="fs-4">Ciclo Viajero</span>
     </a>
     <ul class="nav nav-pills">
-      {% if user in session%}
-      <p style="color:#62ac18c3;" style="font-size: 20%;"> {{user}}</p>
+
+    
+      {% if logged %}
       <li class="nav-item">
-        <a href="/login" class="nav-link"><button type="button" class="btn btn-success">Cerrar sesión</button></a>
+        <a href="/cerrar" class="nav-link"><button type="button" class="btn btn-success">Cerrar sesión</button></a>
       </li>
-      {% else %}
-      <li class="nav-item">
-        <a href="/login" class="nav-link"><button type="button" class="btn btn-success">Iniciar sesión</button></a>
-      </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="/login" class="nav-link"><button type="button" class="btn btn-success">Iniciar sesión</button></a>
+            </li>
+           
       {% endif %}
+     
+
+     
+
       <li class="nav-item">
         <a href="/comunidad" class="nav-link"><button type="button" class="btn btn-success">Comunidad</button></a>
       </li>
